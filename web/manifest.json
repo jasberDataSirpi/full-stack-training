@@ -1,6 +1,6 @@
 {
-    "name": "full_stack_training",
-    "short_name": "full_stack_training",
+    "name": "flutter_training_project",
+    "short_name": "flutter_training_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
