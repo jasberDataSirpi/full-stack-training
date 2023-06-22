@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+
+final String? domainUrl = dotenv.env['TYPECODE_BACKEND_URL'];
 
 Future<List> fetchTodoList() async {
   // Free API from typecode
-  var url = Uri.parse('https://jsonplaceholder.typicode.com/todos');
+  var url = Uri.parse('$domainUrl/todos');
 
   try {
     var response = await http.get(url);
