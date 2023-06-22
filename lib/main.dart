@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import './routes/app_routes.dart';
+import 'package:full_stack_training/task_async_await.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
-AppRoutes appRoutes = AppRoutes();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,9 +11,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My App',
-      initialRoute: '/',
-      routes: appRoutes.getRoutes(),
+      title: 'Flutter Training',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(title: 'Home Title'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Column(
+        children: const <Widget>[
+          Text(
+            'Task Async Await:',
+          ),
+          TaskAsyncAwait(),
+        ],
+      ),
     );
   }
 }

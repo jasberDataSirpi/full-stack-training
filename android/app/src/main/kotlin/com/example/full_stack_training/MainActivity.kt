@@ -1,4 +1,4 @@
-package com.example.flutter_training_project
+package com.example.full_stack_training
 
 import io.flutter.embedding.android.FlutterActivity
 

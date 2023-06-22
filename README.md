@@ -1,4 +1,4 @@
-# flutter_training_project
+# full_stack_training
 
 A new Flutter project.
 
