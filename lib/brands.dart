@@ -62,18 +62,40 @@ class _BrandsState extends State<Brands> {
                     ),
                     itemCount: _brands.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Card(
-                        color: Colors.blueGrey,
-                        child: Center(
-                          child: Column(children: [
-                            Text(_brands[index]["name"]!),
-                            Text("Ph No.: ${_brands[index]["phNo"]!}")
-                          ]),
-                        ),
-                      );
+                      return GestureDetector(
+                          onTap: () => {
+                                Navigator.pushNamed(
+                                  context,
+                                  '/add-brand',
+                                  arguments: {
+                                    'id': _brands[index]["id"]!,
+                                  },
+                                )
+                              },
+                          child: Card(
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/images/meal.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Center(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(_brands[index]["name"]!),
+                                      Text("${_brands[index]["phNo"]!}")
+                                    ]),
+                              ),
+                            ),
+                          ));
                     },
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
               ],
             );
           }

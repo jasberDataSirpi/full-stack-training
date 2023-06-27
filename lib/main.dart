@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:full_stack_training/add_brand.dart';
 import 'package:full_stack_training/brands.dart';
 import 'package:full_stack_training/food.dart';
-import 'package:full_stack_training/home.dart';
+import 'package:full_stack_training/discover.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
@@ -40,11 +40,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentTabIndex = 0;
-  Widget defaultTab = const Home();
+  Widget defaultTab = const Brands();
 
   Map<int, Widget> tabs = {
-    0: const Home(),
-    1: const Brands(),
+    0: const Brands(),
+    1: const Discover(),
     2: const Food(),
   };
 
@@ -82,8 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
           onclickTab(index);
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Brands"),
+          BottomNavigationBarItem(icon: Icon(Icons.shop), label: "Discover"),
           BottomNavigationBarItem(icon: Icon(Icons.food_bank), label: "Food"),
         ],
         currentIndex: currentTabIndex,

@@ -10,6 +10,8 @@ class Food extends StatefulWidget {
 class _FoodState extends State<Food> {
   @override
   Widget build(BuildContext context) {
-    return const Text("Food Page");
+    return const Center(
+      child: Text("Meal Planet Foods Page"),
+    );
   }
 }
