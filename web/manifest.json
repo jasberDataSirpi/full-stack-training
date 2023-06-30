@@ -1,6 +1,6 @@
 {
-    "name": "full_stack_training",
-    "short_name": "full_stack_training",
+    "name": "meal_planet",
+    "short_name": "meal_planet",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

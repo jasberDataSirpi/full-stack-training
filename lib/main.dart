@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:full_stack_training/add_brand.dart';
-import 'package:full_stack_training/brands.dart';
-import 'package:full_stack_training/food.dart';
-import 'package:full_stack_training/discover.dart';
 
-Future<void> main() async {
+void main() async {
   await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
@@ -13,19 +9,16 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Meal Planet Application',
+      title: 'Meal Planet',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      // home: const MyHomePage(title: 'Meal Planet'),
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const MyHomePage(title: "Meal Planet"),
-        "/add-brand": (context) => const AddBrand()
-      },
+      home: const MyHomePage(title: 'Meal Planet'),
     );
   }
 }
@@ -39,19 +32,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int currentTabIndex = 0;
-  Widget defaultTab = const Brands();
+  int _counter = 0;
 
-  Map<int, Widget> tabs = {
-    0: const Brands(),
-    1: const Discover(),
-    2: const Food(),
-  };
-
-  onclickTab(int index) {
+  void _incrementCounter() {
     setState(() {
-      defaultTab = tabs[index]!;
-      currentTabIndex = index;
+      _counter++;
     });
   }
 
@@ -59,34 +44,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            const Icon(
-              Icons.food_bank_outlined,
-              size: 40,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
             ),
-            const SizedBox(width: 8.0),
             Text(
-              widget.title,
-              style: const TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
-      body: defaultTab,
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (int index) {
-          onclickTab(index);
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Brands"),
-          BottomNavigationBarItem(icon: Icon(Icons.shop), label: "Discover"),
-          BottomNavigationBarItem(icon: Icon(Icons.food_bank), label: "Food"),
-        ],
-        currentIndex: currentTabIndex,
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }

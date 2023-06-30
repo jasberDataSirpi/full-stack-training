@@ -1,4 +1,4 @@
-# full_stack_training
+# meal_planet
 
 A new Flutter project.
 
