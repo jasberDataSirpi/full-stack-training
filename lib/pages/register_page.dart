@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:meal_planet/constants/endpoints.dart';
@@ -34,11 +35,9 @@ class _RegisterPageState extends State<RegisterPage> {
       "userName": userName,
       "password": password,
     };
-
     var response =
         await request(HttpMethods.POST, Endpoints.rigister, payload: payload);
-
-    if (response.statusCode == 200) {
+    if (response.statusCode == HttpStatus.created) {
       var responseMap = jsonDecode(utf8.decode(response.bodyBytes));
       setState(() {
         message = responseMap["message"];

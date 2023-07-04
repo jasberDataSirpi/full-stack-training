@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:meal_planet/constants/endpoints.dart';
@@ -26,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
     };
     var response =
         await request(HttpMethods.POST, Endpoints.login, payload: payload);
-    if (response.statusCode == 200) {
+    if (response.statusCode == HttpStatus.ok) {
       var responseMap = jsonDecode(utf8.decode(response.bodyBytes));
       setState(() {
         message = responseMap["message"];
@@ -81,10 +82,22 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text('Login'),
                 )),
             const SizedBox(height: 30),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, "/register");
+              },
+              child: const Text(
+                'Create New Account',
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
             Text(
               message,
               style: TextStyle(color: Colors.green.shade400),
-            )
+            ),
           ],
         ),
       ),
