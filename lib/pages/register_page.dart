@@ -42,6 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
       setState(() {
         message = responseMap["message"];
       });
+      Navigator.pushNamed(context, "/login");
     } else {
       print("Error");
     }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:meal_planet/pages/dashboard_page.dart';
+import 'package:meal_planet/pages/login_page.dart';
 import 'package:meal_planet/pages/my_home_page.dart';
 import 'package:meal_planet/pages/register_page.dart';
 
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var routes = {
+      "/": (context) => const MyHomePage(title: 'Meal Planet'),
+      '/login': (context) => const LoginPage(),
       '/register': (context) => const RegisterPage(),
+      '/dashboard': (context) => const DashboardPage()
     };
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -24,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Meal Planet'),
+      initialRoute: "/",
       routes: routes,
     );
   }

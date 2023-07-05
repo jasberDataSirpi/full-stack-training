@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:meal_planet/constants/endpoints.dart';
 import 'package:meal_planet/constants/http_methods.dart';
 import 'package:meal_planet/services/http_service.dart';
+import 'package:meal_planet/services/local_storage_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   String message = "";
 
-  void _login() async {
+  _login() async {
     String userName = emailController.text;
     String password = passwordController.text;
     final Map<String, String> payload = {
@@ -32,8 +33,11 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         message = responseMap["message"];
       });
+      await saveInSecureStorage(
+          "access_token", responseMap["payload"]["access_token"]);
+      Navigator.pushNamed(context, "/dashboard");
     } else {
-      print("Error");
+      print("Error jass");
     }
   }
 
