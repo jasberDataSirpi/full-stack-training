@@ -2,11 +2,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:meal_planet/constants/http_methods.dart';
 
-// TODO: Need to enable the below lines after deployed
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
-// final String baseUrl = dotenv.env['BACKEND_URL']!;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-const String baseUrl = "localhost:9001";
+final String baseUrl = dotenv.env['BACKEND_URL']!;
 
 // Function to make an HTTP request
 Future<http.Response> request(String method, String urlString,

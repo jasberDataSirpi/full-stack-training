@@ -129,6 +129,16 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             const SizedBox(height: 30),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, "/login");
+              },
+              child: const Text(
+                'Go to Login Page',
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
+            const SizedBox(height: 30),
             Text(
               message,
               style: TextStyle(color: Colors.green.shade400),

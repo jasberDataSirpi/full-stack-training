@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_planet/common-widgets/loading_indicator.dart';
 import 'package:meal_planet/pages/dashboard_page.dart';
 import 'package:meal_planet/pages/login_page.dart';
 import 'package:meal_planet/services/auth_service.dart';
@@ -19,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return isAuthorized;
   }
 
-  getInitialPage() {
+  _getInitialPage() {
     return isAuthorized ? const DashboardPage() : const LoginPage();
   }
 
@@ -28,10 +29,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return FutureBuilder<bool>(
         future: setIsAuthorized(),
         builder: (context, AsyncSnapshot<bool> snapshot) {
-          if (snapshot.hasData) {
-            return getInitialPage();
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            // While data is being fetched
+            return const LoadingIndicator();
+          } else if (snapshot.hasError) {
+            // If there's an error while fetching data
+            return Text('Error: ${snapshot.error}');
           } else {
-            return const Text("Loading");
+            // When data fetching is successful
+            return _getInitialPage();
           }
         });
   }
