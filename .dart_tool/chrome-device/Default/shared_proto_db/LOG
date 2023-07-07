@@ -1,3 +1,6 @@
-2023/07/07-10:06:18.891 238a Reusing MANIFEST /tmp/flutter_tools.MLPQCW/flutter_tools_chrome_device.MRZSPI/Default/shared_proto_db/MANIFEST-000001
-2023/07/07-10:06:18.892 238a Recovering log #3
-2023/07/07-10:06:18.897 238a Reusing old log /tmp/flutter_tools.MLPQCW/flutter_tools_chrome_device.MRZSPI/Default/shared_proto_db/000003.log 
+2023/07/07-12:36:26.431 614a Reusing MANIFEST /tmp/flutter_tools.FOEANA/flutter_tools_chrome_device.IPCRER/Default/shared_proto_db/MANIFEST-000001
+2023/07/07-12:36:26.431 614a Recovering log #3
+2023/07/07-12:36:26.432 614a Reusing old log /tmp/flutter_tools.FOEANA/flutter_tools_chrome_device.IPCRER/Default/shared_proto_db/000003.log 
+2023/07/07-12:36:46.896 614b Level-0 table #5: started
+2023/07/07-12:36:46.908 614b Level-0 table #5: 129651 bytes OK
+2023/07/07-12:36:46.914 614b Delete type=0 #3

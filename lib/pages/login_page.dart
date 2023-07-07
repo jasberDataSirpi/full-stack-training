@@ -3,10 +3,13 @@ import 'dart:io';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:meal_planet/constants/app_colors.dart';
 import 'package:meal_planet/constants/endpoints.dart';
 import 'package:meal_planet/constants/http_methods.dart';
 import 'package:meal_planet/services/http_service.dart';
 import 'package:meal_planet/services/local_storage_service.dart';
+
+import '../page_widgets/alternate_login.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -76,13 +79,13 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10), // Rounded border
-                  color: const Color(0xFFF1F5F5),
+                  color: AppColors.inputBgColor,
                 ),
                 child: TextField(
                   controller: emailController,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    labelText: 'User Name',
+                    labelText: 'Email/User Name*',
                     contentPadding: EdgeInsets.symmetric(
                       vertical: 16.0,
                       horizontal: 20.0,
@@ -97,13 +100,13 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10), // Rounded border
-                  color: const Color(0xFFF1F5F5),
+                  color: AppColors.inputBgColor,
                 ),
                 child: TextField(
                   controller: passwordController,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    labelText: 'Password',
+                    labelText: 'Password*',
                     contentPadding: EdgeInsets.symmetric(
                       vertical: 16.0,
                       horizontal: 20.0,
@@ -121,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xFF01CBBB)),
+                      MaterialStateProperty.all<Color>(AppColors.btnBgColor),
                   shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -144,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
             const Text(
               'Forgot Password?',
               style: TextStyle(
-                color: Color(0xFFBDBDBD),
+                color: AppColors.gray4Color,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.98,
@@ -154,53 +157,14 @@ class _LoginPageState extends State<LoginPage> {
             const Text(
               'Or Login with',
               style: TextStyle(
-                color: Color(0xFF757575),
+                color: AppColors.textSpanColor,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
                 letterSpacing: -0.09,
               ),
             ),
             const SizedBox(height: 17),
-            SizedBox(
-              width: 200,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 49,
-                    width: 49,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/apple.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 49,
-                    width: 49,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/google.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 49,
-                    width: 49,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('images/fb.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const AlternateLogin(),
             const SizedBox(height: 35),
             Text.rich(
               TextSpan(
@@ -208,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                   const TextSpan(
                     text: 'New user?',
                     style: TextStyle(
-                      color: Color(0xFFA8A8A8),
+                      color: AppColors.textSpanColor2,
                       fontSize: 16.28,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.08,
@@ -217,7 +181,6 @@ class _LoginPageState extends State<LoginPage> {
                   const TextSpan(
                     text: ' ',
                     style: TextStyle(
-                      color: Color(0xFF757575),
                       fontSize: 16.28,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.08,
@@ -226,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextSpan(
                     text: 'Sign Up',
                     style: const TextStyle(
-                      color: Color(0xFF01CBBB),
+                      color: AppColors.btnBgColor,
                       fontSize: 16.28,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 0.08,
